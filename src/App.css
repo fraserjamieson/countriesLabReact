@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  margin: 0 auto;
 }
 
 .App-logo {
@@ -39,4 +40,13 @@
 
 .country-Picker{
   border: burlywood;
+}
+
+.countryWrapper{
+  margin: 10px auto;
+  width: 80%;
+}
+
+.countryWrapper h3{
+  width: fit-content;
 }

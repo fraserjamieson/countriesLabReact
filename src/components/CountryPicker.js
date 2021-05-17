@@ -10,7 +10,7 @@ const CountryPicker = ({countryList, changeCountry}) => {
 
     useEffect(()=>{
         changeCountry(countryChild)
-    }, [countryChild])
+    }, [countryChild]);
 
     return (
         <>

@@ -1,6 +1,8 @@
-import { useDebugValue, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Country from '../components/Country';
 import CountryPicker from '../components/CountryPicker';
+
+
 const CountriesBox = () => {
 
     const [countryList, setCountryList] = useState([]);
@@ -26,24 +28,39 @@ const CountriesBox = () => {
         return countryPop + value.population;
     }, 0)
 
-    const handleChangeCountry = country => {
-        setCountryChosen(country);
-    }
+    const handleChangeCountry = name => {
+        setCountryChosen(name);
+    }  
+
+    const handleFavToggle = (name) => {
+       
+        const updatedCountries = countryList.map((country)=>{
+            if (country.name === name){
+                 country.favourite = !country.favourite;
+            }
+            return country;   
+        })
+        setCountryList(updatedCountries)
+    };
 
     const selectedCountry = countryList.find(country => {
         return countryChosen === country.name;
     })
 
-    return (
-        <>
+        return (
+            <>
             <h1>Countries Container</h1> 
             <CountryPicker 
             changeCountry={handleChangeCountry}
             countryList={countryList}/>
             <br></br>
             <h4>Global Population: {globalPop}</h4>
-            <Country selectedCountry={selectedCountry}/>
-        </>
-    )
+            <Country 
+            selectedCountry={selectedCountry}
+            countryList={countryList}
+            favToggle={handleFavToggle}
+            onCountrySelected={handleChangeCountry}/>
+            </>
+        )
 }
 export default CountriesBox;
