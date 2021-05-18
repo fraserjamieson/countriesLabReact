@@ -58,7 +58,9 @@ const CountriesBox = () => {
             <Country 
             selectedCountry={selectedCountry}
             countryList={countryList}
-            favToggle={handleFavToggle}
+            onFavToggle={handleFavToggle}
+            // {(name) => handleFavToggle(name)}
+            
             onCountrySelected={handleChangeCountry}/>
             </>
         )
